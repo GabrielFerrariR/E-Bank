@@ -2,6 +2,7 @@ import {
   Model, DataTypes,
 } from 'sequelize';
 import db from '.';
+import Accounts from './Accounts';
 
 class Users extends Model {
   public id!: number;
@@ -19,4 +20,8 @@ Users.init({
   timestamps: false,
 });
 
+Users.hasOne(Accounts, {
+  foreignKey: 'accountId',
+  as: 'account'
+});
 export default Users;
