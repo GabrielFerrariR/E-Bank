@@ -11,9 +11,24 @@ class Users extends Model {
   public accountId: number;
 }
 Users.init({
+  id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true,
+  },
   username: DataTypes.STRING,
   password: DataTypes.STRING,
-  accountId: DataTypes.NUMBER,
+  accountId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
+    references: {
+      model: 'accounts',
+      key: 'id',
+    },
+  },
 }, {
   sequelize: db,
   modelName: 'users',
