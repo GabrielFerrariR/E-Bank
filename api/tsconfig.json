@@ -10,10 +10,12 @@
     "baseUrl": ".", 
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "strictPropertyInitialization": false,
     "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "paths": {
       "*": ["node_modules/*"]
     }
