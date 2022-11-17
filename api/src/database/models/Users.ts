@@ -8,7 +8,7 @@ class Users extends Model {
   public id!: number;
   public username!: string;
   public password!: string;
-  public accountId: number;
+  public accountId!: number;
 }
 Users.init({
   id: {
@@ -36,7 +36,7 @@ Users.init({
 });
 
 Users.hasOne(Accounts, {
-  foreignKey: 'accountId',
+  foreignKey: 'id',
   as: 'account'
 });
 export default Users;
