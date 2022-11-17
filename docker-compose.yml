@@ -21,20 +21,18 @@ services:
     command: npm run dev
     volumes: 
       - ./api/src:/api/src
-    # depends_on:
-    #   db:
-    #     condition: service_healthy
+    depends_on:
+      db:
+        condition: service_healthy
     environment:
       - API_PORT=3001
-      # - JWT_SECRET=jwt_secret
-      # Os dados abaixo se referem ao container `db`
-      # Dica: Relembre aqui da comunicação interna entre containers
+      - JWT_SECRET=segredobemguardado
       - DB_USER=root
       - DB_PASS=123456
       - DB_HOST=db
       - DB_PORT=5432
     healthcheck:
-      test: ["CMD", "lsof", "-t", "-i:3001"] # Caso utilize outra porta interna para o back, altere ela aqui também
+      test: ["CMD", "lsof", "-t", "-i:3001"]
       timeout: 10s
       retries: 5
   db:
@@ -48,11 +46,11 @@ services:
       - POSTGRES_USER=root
     restart: 'always'
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready", "-d", "db_prod"] # Deve aguardar o banco ficar operacional
+      test: ["CMD-SHELL", "pg_isready", "-d", "db_prod"]
       timeout: 10s
       retries: 5
     cap_add:
-      - SYS_NICE # Deve omitir alertas menores
+      - SYS_NICE
   adminer:
     image: adminer
     restart: always
