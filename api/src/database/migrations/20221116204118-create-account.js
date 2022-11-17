@@ -11,8 +11,8 @@ module.exports = {
       },
       balance: {
         allowNull: false,
-        type: Sequelize.INTEGER,
-        defaultValue: 100, 
+        type: Sequelize.DECIMAL(15,2),
+        defaultValue: 100.00, 
       }
     });
   },
