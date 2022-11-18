@@ -4,7 +4,8 @@ export enum ErrorTypes {
   EntityNotFound = 'EntityNotFound',
   ObjectNotFound = 'ObjectNotFound',
   AlreadyInUse = 'AlreadyInUse',
-  Unauthorized = 'Unauthorized'
+  InvalidToken = 'InvalidToken',
+  WrongCredentials = 'WrongCredentials',
 }
 
 type ErrorResponseObject = { 
@@ -27,8 +28,12 @@ export const errorCatalog: ErrorCatalog = {
     message: 'User already in use',
     httpStatus: StatusCodes.BAD_REQUEST
   },
-  Unauthorized: {
+  InvalidToken: {
     message: 'Token must be valid',
+    httpStatus: StatusCodes.UNAUTHORIZED
+  },
+  WrongCredentials: {
+    message: 'Wrong username or password',
     httpStatus: StatusCodes.UNAUTHORIZED
   }
 };
