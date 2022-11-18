@@ -1,4 +1,4 @@
-{
+{   
     "env": {
         "es2021": true,
         "node": true
@@ -33,6 +33,52 @@
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "@typescript-eslint/no-unused-vars": [
+            "error",
+            {
+              "argsIgnorePattern": "^_",
+              "ignoreRestSiblings": true
+            }
+          ],
+          "@typescript-eslint/lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
+          "no-unused-vars": [
+            "error",
+            {
+              "argsIgnorePattern": "^_",
+              "ignoreRestSiblings": true
+            }
+          ],
+          "object-curly-newline": "off",
+          "max-params": [
+            "error",
+            4
+          ],
+          "max-lines": [
+            "error",
+            250
+          ],
+          "max-lines-per-function": [
+            "error",
+            {
+              "max": 20,
+              "skipBlankLines": true,
+              "skipComments": true
+            }
+          ],
+          "max-len": [
+            "error",
+            100,
+            {
+              "ignoreComments": true
+            }
+          ],
+          "complexity": [
+            "error",
+            12
+          ],
+          "import/no-extraneous-dependencies": [
+            "off"
+          ]
     }
 }
