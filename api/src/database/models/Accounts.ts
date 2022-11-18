@@ -12,26 +12,17 @@ Accounts.init({
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    autoIncrement: true,
     primaryKey: true,
+    autoIncrement: true,
   },
   balance: {
-    type: DataTypes.INTEGER,
-    defaultValue: 100,
+    type: DataTypes.DECIMAL(15,2),
+    defaultValue: 100.00,
   },
 }, {
   sequelize: db,
   modelName: 'accounts',
   timestamps: false,
-});
-
-Accounts.hasMany(Transactions, {
-  foreignKey: 'debitedAccountId',
-  as: 'debitedAccount',
-});
-Accounts.hasMany(Transactions, {
-  foreignKey: 'creditedAccountId',
-  as: 'creditedAccount',
 });
 
 

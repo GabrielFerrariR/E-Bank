@@ -38,6 +38,10 @@ Transactions.init({
       key: 'id',
     },
   },
+  value: {
+    type: DataTypes.DECIMAL(15,2),
+    allowNull: false,
+  }
 }, {
   sequelize: db,
   modelName: 'Transactions',
@@ -50,6 +54,15 @@ Transactions.belongsTo(Accounts, {
   as: 'debitedAccount',
 });
 Transactions.belongsTo(Accounts, {
+  foreignKey: 'creditedAccountId',
+  as: 'creditedAccount',
+});
+
+Accounts.hasMany(Transactions, {
+  foreignKey: 'debitedAccountId',
+  as: 'debitedAccount',
+});
+Accounts.hasMany(Transactions, {
   foreignKey: 'creditedAccountId',
   as: 'creditedAccount',
 });
