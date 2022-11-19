@@ -16,7 +16,7 @@ export default class LoginService {
     const hash = isRegistered.password;
     const isCorrect = await bcrypt.compare(password, hash);
     if (!isCorrect) throw Error(ErrorTypes.WrongCredentials);
-    const token = jwt.sign({ data: { username, } }, secret, {expiresIn: '24h' });
+    const token = jwt.sign({ data: { username } }, secret, {expiresIn: '24h' });
     return {
       token,
     };
