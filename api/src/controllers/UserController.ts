@@ -5,25 +5,27 @@ import { StatusCodes } from 'http-status-codes';
 import { IUser } from '../interfaces/IUser';
 
 export default class UserController implements Controller {
-  service: Service<IUser>;
-  constructor(service: Service<IUser>){
-    this.service = service;
-  }
+  constructor(private _service: Service<IUser>){}
+
   async create(req: Request, res: Response, _next: NextFunction): Promise<void> {
     const { body } = req;
-    const result = await this.service.create(body);
+    const result = await this._service.create(body);
     res.status(StatusCodes.CREATED).json(result);
   }
-  read(req: Request, res: Response, _next: NextFunction): Promise<void> {
+
+  read(_req: Request, _res: Response, _next: NextFunction): Promise<void> {
     throw new Error('Method not implemented.');
   }
-  readOne(req: Request, res: Response, _next: NextFunction): Promise<void> {
+
+  readOne(_req: Request, _res: Response, _next: NextFunction): Promise<void> {
     throw new Error('Method not implemented.');
   }
-  update(req: Request, res: Response, _next: NextFunction): Promise<void> {
+
+  update(_req: Request, _res: Response, _next: NextFunction): Promise<void> {
     throw new Error('Method not implemented.');
   }
-  delete(req: Request, res: Response, _next: NextFunction): Promise<void> {
+
+  delete(_req: Request, _res: Response, _next: NextFunction): Promise<void> {
     throw new Error('Method not implemented.');
   }
 
