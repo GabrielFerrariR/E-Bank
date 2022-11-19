@@ -1,3 +1,4 @@
+import * as bcrypt from 'bcrypt';
 import { IUser, userSchema } from '../interfaces/IUser';
 import Users from '../database/models/Users';
 import Accounts from '../database/models/Accounts';
@@ -11,34 +12,56 @@ export default class UserService implements Service<IUser> {
   constructor(private _model = Users) {
     this._model = _model;
   }
+
   async create(object: unknown): Promise<IUser> {
-    const parse = userSchema.safeParse(object);
-    if(!parse.success) throw parse.error;
-    
-    const isNotUnique = await this._model.findOne({ 
-      where: {
-        username: parse.data.username
-      }});
-  
-    if(isNotUnique) throw Error(ErrorTypes.AlreadyInUse);
+    const {password, username} = this.validateBody(object); 
+    const hash = this.createHash(password);
+    await this.isUniqueUsername(username);
 
     const result = await sequelize.transaction(async (t) => {
       const account = await Accounts.create({ transaction: t });
-      const user = await this._model.create({...parse.data, accountId: account.id}, { transaction: t });
+      const user = await this._model.create({
+        username, password: hash, accountId: account.id
+      }, { transaction: t });
       return user;
     });
+
     return result as unknown as IUser;
   }
+
+  private validateBody(object: unknown) {
+    const parse = userSchema.safeParse(object);
+    if(!parse.success) throw parse.error;
+    return parse.data;
+  }
+
+  private createHash(password: string) {
+    const saltRounds = 10;
+    return bcrypt.hashSync(password, saltRounds);
+  }
+  
+  private async isUniqueUsername(username: string) {
+    const isNotUnique = await this._model.findOne({ 
+      where: {
+        username,
+      }});
+  
+    if(isNotUnique) throw Error(ErrorTypes.AlreadyInUse);
+  }
+
   read(): Promise<IUser[]> {
     throw new Error('Method not implemented.');
   }
-  readOne(id: string): Promise<IUser> {
+
+  readOne(_id: string): Promise<IUser> {
     throw new Error('Method not implemented.');
   }
-  update(id: string, object: IUser): Promise<IUser> {
+
+  update(_id: string, _object: IUser): Promise<IUser> {
     throw new Error('Method not implemented.');
   }
-  delete(id: string): Promise<IUser> {
+
+  delete(_id: string): Promise<IUser> {
     throw new Error('Method not implemented.');
   }
 }
