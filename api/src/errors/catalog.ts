@@ -6,6 +6,8 @@ export enum ErrorTypes {
   AlreadyInUse = 'AlreadyInUse',
   InvalidToken = 'InvalidToken',
   WrongCredentials = 'WrongCredentials',
+  InsufficientFunds = 'InsufficientFunds',
+  Forbidden = 'Forbidden'
 }
 
 type ErrorResponseObject = { 
@@ -35,5 +37,13 @@ export const errorCatalog: ErrorCatalog = {
   WrongCredentials: {
     message: 'Wrong username or password',
     httpStatus: StatusCodes.UNAUTHORIZED
+  },
+  InsufficientFunds: {
+    message: 'Insufficient funds',
+    httpStatus: StatusCodes.BAD_REQUEST
+  },
+  Forbidden: {
+    message: 'Operation not possible',
+    httpStatus: StatusCodes.FORBIDDEN
   }
 };

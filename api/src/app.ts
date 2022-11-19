@@ -4,8 +4,9 @@ import cors from 'cors';
 import errorHandler from './middleWares/errorMiddleWare';
 import UserRoute from './Routes/UserRoute';
 import LoginRoute from './Routes/LoginRoute';
-import authMiddleware from './middleWares/authorization';
 import AccountRoute from './Routes/AccountRoute';
+import TransactionsRoute from './Routes/TransacitonsRoute';
+import authMiddleware from './middleWares/authorization';
 
 class App {
   server;
@@ -28,6 +29,7 @@ class App {
     this.server.use('/users', UserRoute);
     this.server.use('/login', LoginRoute);
     this.server.use('/account', authMiddleware, AccountRoute);
+    this.server.use('/transaction', authMiddleware, TransactionsRoute);
   }
 }
 

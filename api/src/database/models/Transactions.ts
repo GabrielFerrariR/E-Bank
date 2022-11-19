@@ -41,10 +41,12 @@ Transactions.init({
   value: {
     type: DataTypes.DECIMAL(15,2),
     allowNull: false,
-  }
+  },
+  createdAt: DataTypes.DATE,
+  updatedAt: DataTypes.DATE
 }, {
   sequelize: db,
-  modelName: 'Transactions',
+  modelName: 'transactions',
   timestamps: true,
 });
 
