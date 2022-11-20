@@ -20,7 +20,7 @@ const errorHandler: ErrorRequestHandler = ( err: Error | ZodError, _req, res, _n
     return res.status(StatusCodes.UNAUTHORIZED).json({ message: 'Token must be a valid token' });
   }
   console.error(err);
-  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: 'internal error' });
+  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: err.message});
 };
 
 export default errorHandler;
