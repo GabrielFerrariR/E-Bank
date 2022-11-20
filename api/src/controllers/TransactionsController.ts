@@ -7,8 +7,21 @@ export default class TransactionsController {
   constructor(private _service: TransactionService) {}
 
   async create(req: Request, res: Response, _next: NextFunction): Promise<void> {
-    const { body, user } = req;
-    const result = await this._service.create(user, body);
+    const { body, user: { username, accountId } } = req;
+    const result = await this._service.create(username, accountId, body);
     res.status(StatusCodes.CREATED).json(result);
   }
+
+  async readCashIn(req: Request, res: Response, _next: NextFunction) {
+    const { user: { accountId } } = req;
+    const result = await this._service.readCashIn(accountId);
+    res.status(StatusCodes.OK).json(result);
+  }
+
+  async readCashOut(req: Request, res: Response, _next: NextFunction) {
+    const { user: { accountId  } } = req;
+    const result = await this._service.readCashOut(accountId);
+    res.status(StatusCodes.OK).json(result);
+  }
+
 }

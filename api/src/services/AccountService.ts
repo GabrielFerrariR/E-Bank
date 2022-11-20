@@ -2,7 +2,7 @@ import Accounts from '../database/models/Accounts';
 import Users from '../database/models/Users';
 import { IBalance } from '../interfaces/IBalance';
 import { Service } from '../interfaces/Service';
-import sequelize from '../database/models';
+import { Transaction } from 'sequelize';
 
 export default class AccountService 
 implements Omit<Service<IBalance>, 'read' | 'create' | 'readOne' | 'delete'> 
@@ -24,22 +24,14 @@ implements Omit<Service<IBalance>, 'read' | 'create' | 'readOne' | 'delete'>
     return result as unknown as IBalance;
   }
 
-  async transfer(userId:number , addresseeId:number, amount:number) {
-    await sequelize.transaction(async (t) => {
-      await this._accModel.decrement('balance', { 
-        by: amount, 
-        where: { id: userId }, 
-        transaction: t});
-      await this._accModel.increment('balance', { 
-        by: amount, 
-        where: { id: addresseeId }, 
-        transaction: t});
-    });
+  async transfer(userId:number , addresseeId:number, amount:number, t: Transaction) {
+    await this._accModel.decrement('balance', { 
+      by: amount, 
+      where: { id: userId }, 
+      transaction: t});
+    await this._accModel.increment('balance', { 
+      by: amount, 
+      where: { id: addresseeId }, 
+      transaction: t});
   }
-
-
-  // delete(id: string): Promise<IBalance> {
-  //   throw new Error('Method not implemented.');
-  // }
-
 }
