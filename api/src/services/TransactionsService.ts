@@ -3,6 +3,7 @@ import { ITransaction } from '../interfaces/ITransaction';
 import AccountService from './AccountService';
 import Transactions from '../database/models/Transactions';
 import sequelize from '../database/models';
+import { Op } from 'sequelize';
 
 export default class TransactionService {
 
@@ -38,9 +39,22 @@ export default class TransactionService {
   }
 
   async readCashIn(accountId: number): Promise<Transactions[]> {
+    
     return await this._model.findAll({
       where: {
         creditedAccountId: accountId
+      }
+    });
+  }
+
+  async read(accountId: number): Promise<Transactions[]> {
+    return await this._model.findAll({
+      where: {
+        [Op.or]: [{
+          debitedAccountId: accountId
+        },{
+          creditedAccountId: accountId
+        }],
       }
     });
   }

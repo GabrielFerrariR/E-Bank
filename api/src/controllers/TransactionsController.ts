@@ -12,6 +12,12 @@ export default class TransactionsController {
     res.status(StatusCodes.CREATED).json(result);
   }
 
+  async read(req: Request, res: Response, _next: NextFunction) {
+    const { user: { accountId } } = req;
+    const result = await this._service.read(accountId);
+    res.status(StatusCodes.OK).json(result);
+  }
+
   async readCashIn(req: Request, res: Response, _next: NextFunction) {
     const { user: { accountId } } = req;
     const result = await this._service.readCashIn(accountId);
