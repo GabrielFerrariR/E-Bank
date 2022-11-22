@@ -21,4 +21,9 @@ export default class LoginService {
       token,
     };
   }
+
+  async validate(auth: string) {
+    jwt.verify(auth, secret);
+    return auth;
+  }
 }
