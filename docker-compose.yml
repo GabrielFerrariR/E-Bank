@@ -5,11 +5,13 @@ services:
     ports:
       - 3000:3000
     working_dir: /client
+    volumes: 
+      - ./client/src:/client/src
     depends_on:
       api:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "lsof", "-t", "-i:3000"]  # Caso utilize outra porta interna para o front, altere ela aqui também
+      test: ["CMD", "lsof", "-t", "-i:3000"]
       timeout: 10s
       retries: 5
   api:
@@ -18,7 +20,6 @@ services:
     ports:
       - 3001:3001
     working_dir: /api
-    command: npm run dev
     volumes: 
       - ./api/src:/api/src
     depends_on:
