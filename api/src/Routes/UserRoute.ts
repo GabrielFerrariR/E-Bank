@@ -8,4 +8,5 @@ const controller = new UserController(service);
 const router = Router();
 
 router.post('/', (req, res, next) => controller.create(req, res, next));
+router.get('/:id', (req, res, next) => controller.readOne(req, res, next));
 export default router;

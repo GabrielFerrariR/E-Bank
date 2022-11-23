@@ -53,8 +53,17 @@ export default class UserService implements Service<IUser> {
     throw new Error('Method not implemented.');
   }
 
-  readOne(_id: string): Promise<IUser> {
-    throw new Error('Method not implemented.');
+  async readOne(id: string): Promise<IUser> {
+    const result = await this._model.findOne({
+      where: {
+        accountId: id
+      },
+      attributes: {
+        exclude: ['password']
+      }
+    });
+    if (!result) throw new Error(ErrorTypes.EntityNotFound);
+    return result;
   }
 
   update(_id: string, _object: IUser): Promise<IUser> {
