@@ -1,0 +1,37 @@
+.main {
+  padding: 5rem 2rem 1rem;
+}
+
+.header {
+  position: fixed;
+  height: 4rem;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: black;
+}
+
+.header img {
+  width: 3rem;
+}
+
+.balance {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0 2rem 0;
+}
+
+.history {
+  position: relative;
+  padding: 1rem 0 0 0;
+}
+
+.history::after {
+  top:0;
+  background-color: black;
+  content: '';
+  height: 1px;
+  position: absolute;
+  width: 100%;
+}
