@@ -9,7 +9,7 @@ function useAccount() {
     accountId: 0,
     account: {
       id: 0,
-      balance: '00.00',
+      balance: 0,
     },
   });
   useEffect(() => {
