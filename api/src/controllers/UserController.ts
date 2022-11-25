@@ -13,8 +13,9 @@ export default class UserController implements Controller {
     res.status(StatusCodes.CREATED).json(result);
   }
 
-  read(_req: Request, _res: Response, _next: NextFunction): Promise<void> {
-    throw new Error('Method not implemented.');
+  async read(_req: Request, res: Response, _next: NextFunction): Promise<void> {
+    const result = await this._service.read();
+    res.status(StatusCodes.OK).json(result);
   }
 
   async readOne(req: Request, res: Response, _next: NextFunction): Promise<void> {

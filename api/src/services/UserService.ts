@@ -49,8 +49,13 @@ export default class UserService implements Service<IUser> {
     if(isNotUnique) throw Error(ErrorTypes.AlreadyInUse);
   }
 
-  read(): Promise<IUser[]> {
-    throw new Error('Method not implemented.');
+  async read(): Promise<IUser[]> {
+    const result = await this._model.findAll({
+      attributes: {
+        exclude: ['password']
+      }
+    });
+    return result;
   }
 
   async readOne(id: string): Promise<IUser> {
