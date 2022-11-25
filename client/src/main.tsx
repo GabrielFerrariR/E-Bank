@@ -12,7 +12,9 @@ if (process.env.NODE_ENV !== 'production') {
     axe.default(React, ReactDOM, 1000);
     ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <React.StrictMode>
-        <Routes />
+        <Provider>
+          <Routes />
+        </Provider>
       </React.StrictMode>,
     );
   });
