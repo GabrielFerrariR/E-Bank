@@ -5,6 +5,7 @@ import Balance from '../Pages/Balance';
 import ProtectedRoute from './ProtectedRoute';
 import Login from '../Pages/Login';
 import Transaction from '../Pages/Transaction';
+import History from '../Pages/History';
 
 function Routes() {
   return (
@@ -25,6 +26,14 @@ function Routes() {
           element={(
             <ProtectedRoute>
               <Transaction />
+            </ProtectedRoute>
+          )}
+        />
+        <Route
+          path="/history"
+          element={(
+            <ProtectedRoute>
+              <History />
             </ProtectedRoute>
           )}
         />
