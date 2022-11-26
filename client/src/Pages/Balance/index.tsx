@@ -3,16 +3,15 @@ import style from './style.module.css';
 import AppFooter from '../../components/AppFooter';
 import useTransactions from '../../hooks/useTransactions';
 import TransactionCard from '../../components/TransactionCard.';
+import AppHeader from '../../components/AppHeader';
 
 function Balance() {
   const { account: { balance }, accountId } = useAccount();
-  const transactions = useTransactions();
+  const { transactions } = useTransactions();
 
   return (
     <main className={style.main}>
-      <header className={style.header}>
-        <img src="https://ng.cash/_nuxt/img/logo-ngcash-branco.88c5860.svg" alt="ngcash" />
-      </header>
+      <AppHeader />
       <h1>Carteira:</h1>
       <section className={style.balance}>
         <p>Saldo em conta: </p>
