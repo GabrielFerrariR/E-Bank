@@ -3,29 +3,26 @@ import ITransactions from '../../interfaces/ITransactions';
 import { requestData } from '../../services/api';
 import style from './style.module.css';
 
-function TranscationCard({
-  value, debitedAccountId, creditedAccountId, account, createdAt,
+function TransactionCard({
+  value, debitedAccount, creditedAccount, account, createdAt,
 }: ITransactions & { account: number }) {
-  const [addressee, setAdressee] = useState('');
+  const {
+    user: { username: CreditedUsername },
+  } = creditedAccount;
+  const {
+    id: debitedAccountId,
+    user: { username: debitedAccountUserName },
+  } = debitedAccount;
   const isCashOut = debitedAccountId === account;
   const createdDate = new Date(createdAt);
-  useEffect(() => {
-    const fetch = (async () => {
-      const { username } = isCashOut
-        ? await requestData(`/users/${creditedAccountId}`)
-        : await requestData(`/users/${creditedAccountId}`);
-      setAdressee(username);
-    });
-    fetch();
-  });
 
   return (
     <section>
-      <h3>{addressee}</h3>
-      <h2 className={isCashOut ? style.cashOut : style.CashIn}>{value}</h2>
+      <h3>{isCashOut ? CreditedUsername : debitedAccountUserName }</h3>
+      <h2 className={isCashOut ? style.cashOut : style.cashIn}>{Number(value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</h2>
       <p>{createdDate.toLocaleString()}</p>
     </section>
   );
 }
 
-export default TranscationCard;
+export default TransactionCard;
