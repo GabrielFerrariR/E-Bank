@@ -4,6 +4,7 @@ import {
 import Balance from '../Pages/Balance';
 import ProtectedRoute from './ProtectedRoute';
 import Login from '../Pages/Login';
+import Transaction from '../Pages/Transaction';
 
 function Routes() {
   return (
@@ -16,6 +17,14 @@ function Routes() {
           element={(
             <ProtectedRoute>
               <Balance />
+            </ProtectedRoute>
+          )}
+        />
+        <Route
+          path="/transaction"
+          element={(
+            <ProtectedRoute>
+              <Transaction />
             </ProtectedRoute>
           )}
         />

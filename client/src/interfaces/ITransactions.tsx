@@ -1,8 +1,20 @@
 export default interface ITransactions {
   'id': number,
-  'debitedAccountId': number,
-  'creditedAccountId': number,
   'value': number,
   'createdAt': string,
   'updatedAt': string,
+  'creditedAccount': {
+    'id': number,
+    'user': {
+      'id': number,
+      'username': string
+    }
+  },
+  'debitedAccount': {
+    'id': number,
+    'user': {
+      'id': number,
+      'username': string
+    }
+  }
 }

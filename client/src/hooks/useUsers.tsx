@@ -17,7 +17,9 @@ function useUsers() {
       }
     };
     fetch();
+  }, []);
 
+  useEffect(() => {
     if (userContext) {
       const filter = users.filter((user) => userContext.user.username !== user.username);
       setFilteredUsers(filter);
