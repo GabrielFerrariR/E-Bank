@@ -10,3 +10,8 @@
 .main * {
   margin: 0.5em 0
 }
+
+.anchor {
+  text-decoration: none;
+  color: #8f08ff;
+}

@@ -12,14 +12,14 @@ function Login() {
           <p>
             Ainda não é cadastrado?
             {' '}
-            <Link to="/register">Cadastre-se</Link>
+            <Link className={style.anchor} to="/register">Cadastre-se</Link>
           </p>
         )
         : (
           <p>
             Ja é cadastrado?
             {' '}
-            <Link to="/login">Efetue o login</Link>
+            <Link className={style.anchor} to="/login">Efetue o login</Link>
           </p>
         )}
     </main>
