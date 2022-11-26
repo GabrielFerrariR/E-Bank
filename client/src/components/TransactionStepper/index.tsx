@@ -90,11 +90,15 @@ export default function TransactionStepper() {
         <p>
           Transferir
           {' '}
-          {Number(amount).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+          <strong>
+            {Number(amount).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+          </strong>
           {' '}
           para
           {' '}
-          {addressee}
+          <strong>
+            {addressee}
+          </strong>
           {' '}
           ?
         </p>

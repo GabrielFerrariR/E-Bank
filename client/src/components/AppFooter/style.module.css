@@ -14,3 +14,9 @@
   border: none;
   background-color: black;
 }
+
+@media (min-width: 800px) {
+  .footer {
+    display: none;
+  }
+}

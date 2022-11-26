@@ -12,13 +12,15 @@ function Balance() {
   return (
     <main className={style.main}>
       <AppHeader />
-      <h1>Carteira:</h1>
-      <section className={style.balance}>
-        <p>Saldo em conta: </p>
-        <h2>{ Number(balance).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }</h2>
-      </section>
-      <h3>Transações Recentes</h3>
+      <div className={style.balance_container}>
+        <h1>Carteira:</h1>
+        <section className={style.balance}>
+          <p>Saldo em conta: </p>
+          <h2>{ Number(balance).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }</h2>
+        </section>
+      </div>
       <section className={style.history}>
+        <h3>Transações Recentes</h3>
         {transactions.map((t) => (
           <TransactionCard
             key={t.id}

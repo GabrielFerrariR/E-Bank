@@ -59,6 +59,11 @@ button {
   font-size: 1.1rem;
 }
 
+a {
+  text-decoration: none;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
 .label-sm {
   color: var(--primary);
   font-family: 'IBM Plex Sans', sans-serif;

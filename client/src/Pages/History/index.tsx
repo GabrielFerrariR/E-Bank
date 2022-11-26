@@ -34,10 +34,15 @@ export default function History() {
     <main className={style.main}>
       <AppHeader />
       <section>
-        <input type="date" name="" value={date} id="" onChange={handleDateFiltering} />
-        <div className={style.filter_btn_container}>
-          <button className={style.button} type="button" onClick={() => setCurrentList(transactions)}>Todas</button>
-          <button className={style.button} type="button" onClick={toggleFiltering}>{toggle ? 'Entradas ↓' : 'Saídas ↑'}</button>
+        <div className={style.filter_options}>
+          <label className={style.label} htmlFor="date">
+            Buscar:
+            <input type="date" name="date" id="date" value={date} onChange={handleDateFiltering} />
+          </label>
+          <div className={style.filter_btn_container}>
+            <button className={style.button} type="button" onClick={() => setCurrentList(transactions)}>Todas</button>
+            <button className={style.button} type="button" onClick={toggleFiltering}>{toggle ? 'Entradas ↓' : 'Saídas ↑'}</button>
+          </div>
         </div>
         <section className={style.transactions_container}>
           {currentList.map(({
