@@ -5,3 +5,43 @@
 .cashIn {
   color: rgb(70, 220, 54);
 }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0 0.5em 3.2rem;
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+.card::before {
+  bottom:0;
+  background-color: rgb(188, 187, 187);
+  content: '';
+  height: 1px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+
+.card::after {
+  top: 2.2rem;
+  background-color: rgb(221, 221, 221);
+  content: '';
+  height: 1px;
+  position: absolute;
+  width: 85%;
+}
+
+.card img {
+  position: absolute;
+  width: 3rem;
+  top: 0.3em;
+  left: 0;
+}
+
+.card_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
