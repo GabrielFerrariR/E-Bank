@@ -11,6 +11,10 @@
   margin: 0.5em 0
 }
 
+.main p{
+  margin-left: 2em;
+}
+
 .anchor {
   text-decoration: none;
   color: #8f08ff;

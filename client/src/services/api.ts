@@ -26,4 +26,9 @@ export const requestData = async (param: string) => {
   return data;
 };
 
+export const requestTransfer = async (body: { addressee: string, amount: number }) => {
+  const { data } = await api.post('/transaction', body);
+  return data;
+};
+
 export default request;

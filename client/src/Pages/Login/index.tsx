@@ -6,6 +6,7 @@ function Login() {
   const { pathname } = useLocation();
   return (
     <main className={style.main}>
+      <h1>Bank</h1>
       <LoginForm />
       {(pathname === '/login')
         ? (
