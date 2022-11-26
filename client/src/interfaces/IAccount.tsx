@@ -4,6 +4,6 @@ export default interface IAccount {
   'accountId':number;
   'account': {
     'id': number;
-    'balance': string;
+    'balance': number;
   }
 }

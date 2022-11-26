@@ -1,8 +1,8 @@
 import useAccount from '../../hooks/useAccount';
 import style from './style.module.css';
-import Footer from '../../components/Footer';
+import AppFooter from '../../components/AppFooter';
 import useTransactions from '../../hooks/useTransactions';
-import TranscationCard from '../../components/TransactionCard.';
+import TransactionCard from '../../components/TransactionCard.';
 
 function Balance() {
   const { account: { balance }, accountId } = useAccount();
@@ -16,24 +16,24 @@ function Balance() {
       <h1>Carteira:</h1>
       <section className={style.balance}>
         <p>Saldo em conta: </p>
-        <h2>{ balance }</h2>
+        <h2>{ Number(balance).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }</h2>
       </section>
       <section className={style.history}>
         <h2>Histórico de transações</h2>
         {transactions.map((t) => (
-          <TranscationCard
+          <TransactionCard
             key={t.id}
             account={accountId}
             id={t.id}
             value={t.value}
-            creditedAccountId={t.creditedAccountId}
-            debitedAccountId={t.debitedAccountId}
+            creditedAccount={t.creditedAccount}
+            debitedAccount={t.debitedAccount}
             createdAt={t.createdAt}
             updatedAt={t.updatedAt}
           />
         ))}
       </section>
-      <Footer />
+      <AppFooter />
     </main>
   );
 }
