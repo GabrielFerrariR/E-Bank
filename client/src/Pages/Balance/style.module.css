@@ -1,5 +1,5 @@
 .main {
-  padding: 5rem 2rem 1rem;
+  padding: 6rem 3rem 1rem 3rem ;
 }
 
 .balance {
@@ -7,20 +7,36 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin: 2rem 0 2rem 0;
+  margin: 3rem 0 2rem 0;
 }
 
 .history {
   position: relative;
   padding: 1rem 0 0 0;
   overflow: visible;
+  margin-top: 1rem;
 }
 
-.history::after {
-  top:0;
+.balance::after {
+  bottom:0;
   background-color: black;
   content: '';
   height: 1px;
   position: absolute;
   width: 100%;
+}
+
+@media (min-width: 800px) {
+  .history {
+    position: relative;
+    padding: 1rem 0 0 0;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1200px){
+  
 }

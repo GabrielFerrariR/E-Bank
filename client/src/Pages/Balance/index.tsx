@@ -17,8 +17,8 @@ function Balance() {
         <p>Saldo em conta: </p>
         <h2>{ Number(balance).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }</h2>
       </section>
+      <h3>Transações Recentes</h3>
       <section className={style.history}>
-        <h2>Histórico de transações</h2>
         {transactions.map((t) => (
           <TransactionCard
             key={t.id}
@@ -30,7 +30,7 @@ function Balance() {
             createdAt={t.createdAt}
             updatedAt={t.updatedAt}
           />
-        ))}
+        )).slice(0, 5)}
       </section>
       <AppFooter />
     </main>

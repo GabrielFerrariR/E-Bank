@@ -3,6 +3,10 @@
 	position: relative;
 }
 
+.input {
+	text-align: end;
+}
+
 .button {
 	box-shadow: 3px 4px 0px 0px #000000;
 	background-color:#ffffff;
@@ -10,8 +14,11 @@
 	border:1px solid #000000;
 	display:inline-block;
 	cursor:pointer;
-	padding:12px 44px;
+	padding:0.8rem 0;
+	text-align: center;
+	width: 8rem;
 }
+
 .button:hover {
 	background-color:#ffffff;
 }
@@ -25,4 +32,33 @@
   position: absolute;
   top: 2.1rem;
   left: 0.8rem;
+}
+
+.stepper_container {
+	margin:  2em 0 0 0;
+}
+
+.stepper_container p {
+	height: 4.5rem;
+}
+
+.stepper_btn_container {
+	display: flex;
+	justify-content: space-between;
+	margin: 2rem 0 0 0;
+}
+
+.submit_info_container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.submit_info_container *{
+	margin-top: 1em;
+}
+
+.submit_info_container img {
+	width: 10em;
 }

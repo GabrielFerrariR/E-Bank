@@ -3,7 +3,7 @@
 }
 
 .cashIn {
-  color: rgb(70, 220, 54);
+  color: rgb(43, 142, 32);
 }
 
 .card {
@@ -44,4 +44,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@media (min-width: 800px) {
+  .card {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0 0.5em 3.2rem;
+    margin: 1.5rem 0;
+    position: relative;
+    width: 60%;
+  }
 }

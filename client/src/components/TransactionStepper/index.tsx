@@ -1,13 +1,10 @@
 import { ChangeEvent, useCallback, useState } from 'react';
-import { Select, MenuItem, SelectChangeEvent } from '@mui/material';
-import useUsers from '../../hooks/useUsers';
 import style from './style.module.css';
 import { requestTransfer } from '../../services/api';
-import { inputSx } from './styleSx';
 import warningIcon from '../../assets/images/atention.svg';
 import phoneIcon from '../../assets/images/phoneTransaction.svg';
 
-const steps = ['Defina o valor da transferência', 'Escolha quem vai receber', 'Confirme a transferência'];
+const steps = ['Defina o valor da transferência:', 'Escolha quem vai receber:', 'Confirme a transferência:'];
 
 const defaultFormState = {
   amount: 0,
@@ -20,7 +17,6 @@ export default function TransactionStepper() {
     addressee: '',
   });
   const { amount, addressee } = transferData;
-  const { filteredUsers } = useUsers();
   const [activeStep, setActiveStep] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
@@ -35,8 +31,7 @@ export default function TransactionStepper() {
   };
 
   const handleChange = useCallback(
-    ({ target: { name, value } }: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-    | SelectChangeEvent<string>) => {
+    ({ target: { name, value } }: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       setTransferData({ ...transferData, [name]: value });
     },
     [transferData],
@@ -63,40 +58,40 @@ export default function TransactionStepper() {
 
   if (isSubmitted) {
     return (
-      <section>
+      <section className={style.submit_info_container}>
         {error
           ? <img src={warningIcon} alt="warning" />
           : <img src={phoneIcon} alt="phone" /> }
         <p>{submitMessage}</p>
-        <button type="button" onClick={handleRestart}>Voltar</button>
+        <button type="button" onClick={handleRestart} className={style.button}>Voltar</button>
       </section>
     );
   }
 
   return (
-    <section>
+    <section className={style.stepper_container}>
       <p>
         {steps[activeStep]}
       </p>
       {activeStep === 0 && (
-      <label htmlFor="username" className={style.label}>
+      <label htmlFor="amount" className={style.label}>
         Valor:
-        <input type="number" name="amount" id="amount" onChange={handleChange} value={amount} />
+        <input type="number" name="amount" id="amount" onChange={handleChange} value={amount} className={style.input} />
         <h3 className={style.currency}>R$</h3>
       </label>
       )}
       {activeStep === 1 && (
-        <Select name="addressee" id="addressee" value={addressee} onChange={handleChange} sx={inputSx}>
-          {filteredUsers.map((user) => (
-            <MenuItem key={user.id} value={user.username}>{user.username}</MenuItem>
-          ))}
-        </Select>
+        <label htmlFor="addressee" className={style.label}>
+          Usuário:
+          <input type="text" name="addressee" id="addressee" onChange={handleChange} value={addressee} />
+        </label>
       )}
       {activeStep === 2 && (
         <p>
           Transferir
           {' '}
           {Number(amount).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+          {' '}
           para
           {' '}
           {addressee}
@@ -104,9 +99,11 @@ export default function TransactionStepper() {
           ?
         </p>
       )}
-      {activeStep !== 0 && <button type="button" onClick={handleBack}>Anterior</button>}
-      {activeStep !== 2 && <button type="button" onClick={handleNext}>Próximo</button>}
-      {activeStep === 2 && <button type="button" onClick={handleSubmit}>Confirmar</button>}
+      <section className={style.stepper_btn_container}>
+        {activeStep !== 0 && <button type="button" onClick={handleBack} className={style.button}>Anterior</button>}
+        {activeStep !== 2 && <button type="button" onClick={handleNext} className={style.button}>Próximo</button>}
+        {activeStep === 2 && <button type="button" onClick={handleSubmit} className={style.button}>Confirmar</button>}
+      </section>
     </section>
   );
 }
