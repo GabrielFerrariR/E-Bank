@@ -8,7 +8,7 @@ import { ErrorTypes } from '../errors/catalog';
 
 
 
-export default class UserService implements Service<IUser> {
+export default class UserService implements Omit<Service<IUser>, 'read' | 'update' |'delete'> {
   constructor(private _model = Users) {
     this._model = _model;
   }
@@ -49,15 +49,6 @@ export default class UserService implements Service<IUser> {
     if(isNotUnique) throw Error(ErrorTypes.AlreadyInUse);
   }
 
-  async read(): Promise<IUser[]> {
-    const result = await this._model.findAll({
-      attributes: {
-        exclude: ['password']
-      }
-    });
-    return result;
-  }
-
   async readOne(id: string): Promise<IUser> {
     const result = await this._model.findOne({
       where: {
@@ -69,13 +60,5 @@ export default class UserService implements Service<IUser> {
     });
     if (!result) throw new Error(ErrorTypes.EntityNotFound);
     return result;
-  }
-
-  update(_id: string, _object: IUser): Promise<IUser> {
-    throw new Error('Method not implemented.');
-  }
-
-  delete(_id: string): Promise<IUser> {
-    throw new Error('Method not implemented.');
   }
 }
