@@ -24,5 +24,4 @@ Accounts.init({
   timestamps: false,
 });
 
-
 export default Accounts;

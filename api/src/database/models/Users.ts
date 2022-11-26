@@ -39,4 +39,10 @@ Users.hasOne(Accounts, {
   foreignKey: 'id',
   as: 'account'
 });
+
+Accounts.belongsTo(Users, {
+  foreignKey: 'id',
+  as: 'user'
+});
+
 export default Users;

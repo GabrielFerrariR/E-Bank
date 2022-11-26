@@ -4,10 +4,37 @@ import AccountService from './AccountService';
 import Transactions from '../database/models/Transactions';
 import sequelize from '../database/models';
 import { Op } from 'sequelize';
+import Users from '../database/models/Users';
+import Accounts from '../database/models/Accounts';
 
 export default class TransactionService {
+  private _includeUser = [ {
+    model: Accounts,
+    as: 'creditedAccount',
+    attributes: ['id'], 
+    include: [{
+      model: Users,
+      as: 'user',
+      attributes: ['id', 'username'] 
+    }],
+  },
+  {
+    model: Accounts,
+    as: 'debitedAccount',
+    attributes: ['id'], 
+    include: [{
+      model: Users,
+      as: 'user',
+      attributes: ['id', 'username'] 
+    }],
+  }
+  ];
 
-  constructor(private _AccService = new AccountService(), private _model= Transactions) {}
+  constructor(
+    private _AccService = new AccountService(), 
+    private _transactionModel= Transactions,
+    private _AccountModel = Accounts,
+    private _UserMOdel = Users) {}
 
   async create(username: string, userId: number, body: ITransaction): Promise<Transactions> {
     const {addressee, amount } = body;
@@ -20,7 +47,7 @@ export default class TransactionService {
     const result = await sequelize.transaction(async (t) => {
       await this._AccService.transfer(userId, addresseeId, amount, t);
       
-      return await this._model.create({
+      return await this._transactionModel.create({
         debitedAccountId: userId,
         creditedAccountId: addresseeId,
         value: amount
@@ -40,30 +67,42 @@ export default class TransactionService {
 
   async readCashIn(accountId: number): Promise<Transactions[]> {
     
-    return await this._model.findAll({
+    return await this._transactionModel.findAll({
       where: {
         creditedAccountId: accountId
-      }
+      },
+      attributes: {
+        exclude: ['creditedAccountId', 'debitedAccountId']
+      },
+      include: this._includeUser,
     });
   }
 
   async read(accountId: number): Promise<Transactions[]> {
-    return await this._model.findAll({
+    return await this._transactionModel.findAll({
       where: {
         [Op.or]: [{
           debitedAccountId: accountId
         },{
           creditedAccountId: accountId
         }],
-      }
+      },
+      attributes: {
+        exclude: ['creditedAccountId', 'debitedAccountId']
+      },
+      include: this._includeUser,
     });
   }
 
   async readCashOut(accountId: number): Promise<Transactions[]> {    
-    return await this._model.findAll({
+    return await this._transactionModel.findAll({
       where: {
         debitedAccountId: accountId
-      }
+      },
+      attributes: {
+        exclude: ['creditedAccountId', 'debitedAccountId']
+      },
+      include: this._includeUser,
     });
   }
 }
