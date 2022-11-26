@@ -75,6 +75,7 @@ export default class TransactionService {
         exclude: ['creditedAccountId', 'debitedAccountId']
       },
       include: this._includeUser,
+      order: [['createdAt', 'DESC']],
     });
   }
 
@@ -91,6 +92,7 @@ export default class TransactionService {
         exclude: ['creditedAccountId', 'debitedAccountId']
       },
       include: this._includeUser,
+      order: [['createdAt', 'DESC']],
     });
   }
 
@@ -103,6 +105,7 @@ export default class TransactionService {
         exclude: ['creditedAccountId', 'debitedAccountId']
       },
       include: this._includeUser,
+      order: [['createdAt', 'DESC']],
     });
   }
 }
