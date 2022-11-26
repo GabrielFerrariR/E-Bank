@@ -1,0 +1,23 @@
+.header {
+  background-color: black;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  top: 0;
+  left: 0;
+  height: 4rem;
+  width: 100%;
+  z-index: 99;
+}
+
+.icons_container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding:0 1.5em 0 1.5em;
+  width: 100%;
+}
+
+.header img {
+  width: 3rem;
+}

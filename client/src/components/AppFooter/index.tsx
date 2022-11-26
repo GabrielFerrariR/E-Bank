@@ -1,5 +1,5 @@
 import WalletIcon from '@mui/icons-material/Wallet';
-import LogoutIcon from '@mui/icons-material/Logout';
+
 import ManageSearch from '@mui/icons-material/ManageSearch';
 import { useNavigate } from 'react-router-dom';
 import style from './style.module.css';
@@ -18,7 +18,6 @@ function AppFooter() {
         <img src={moneyTransferIcon} alt="money transfer" />
       </button>
       <ManageSearch sx={{ color: 'white' }} fontSize="large" onClick={() => navigate('/history')} />
-      <LogoutIcon sx={{ color: 'white' }} fontSize="large" />
     </footer>
   );
 }
