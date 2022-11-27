@@ -10,3 +10,14 @@ export const userSchema= z.object({
 });
 
 export type IUser = z.infer<typeof userSchema>
+
+export type IUserResponse = {
+  id: number,
+  username: string,
+  accountId: number
+}
+
+export type ReqUser = {
+  username: string,
+  accountId: number
+}

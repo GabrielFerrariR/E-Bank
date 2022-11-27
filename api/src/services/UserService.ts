@@ -1,19 +1,21 @@
 import * as bcrypt from 'bcrypt';
-import { IUser, userSchema } from '../interfaces/IUser';
+import { IUserResponse, userSchema } from '../interfaces/IUser';
 import Users from '../database/models/Users';
 import Accounts from '../database/models/Accounts';
 import { Service } from '../interfaces/Service';
 import sequelize from '../database/models';
 import { ErrorTypes } from '../errors/catalog';
+import { Token } from '../interfaces/Token';
 
 
 
-export default class UserService implements Omit<Service<IUser>, 'read' | 'update' |'delete'> {
+export default class UserService implements 
+Omit<Service<IUserResponse | Token>, 'create' | 'read' | 'update' |'delete'> {
   constructor(private _model = Users) {
     this._model = _model;
   }
 
-  async create(object: unknown): Promise<IUser> {
+  async create(object: unknown): Promise<Token> {
     const {password, username} = this.validateBody(object); 
     const hash = this.createHash(password);
     await this.isUniqueUsername(username);
@@ -26,7 +28,7 @@ export default class UserService implements Omit<Service<IUser>, 'read' | 'updat
       return user;
     });
 
-    return result as unknown as IUser;
+    return result as unknown as Token;
   }
 
   private validateBody(object: unknown) {
@@ -49,7 +51,7 @@ export default class UserService implements Omit<Service<IUser>, 'read' | 'updat
     if(isNotUnique) throw Error(ErrorTypes.AlreadyInUse);
   }
 
-  async readOne(id: string): Promise<IUser> {
+  async readOne(id: string): Promise<IUserResponse> {
     const result = await this._model.findOne({
       where: {
         accountId: id
