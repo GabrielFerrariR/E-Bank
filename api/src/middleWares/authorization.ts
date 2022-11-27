@@ -1,15 +1,12 @@
 import { NextFunction, Request, Response } from 'express';
 import { ErrorTypes } from '../errors/catalog';
 import jwt from 'jsonwebtoken';
+import { ReqUser } from '../interfaces/IUser';
 
-type User = {
-  username: string,
-  accountId: number
-}
 
 declare module 'express-serve-static-core' {
   interface Request {
-    user: User
+    user: ReqUser
   }
 }
 

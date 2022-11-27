@@ -4,7 +4,7 @@
     "module": "commonjs",
     "sourceMap": true,                     
     "outDir": "./build",
-    "rootDir": "./src",
+    "rootDir": ".",
     "strict": true,
     "moduleResolution": "node",
     "baseUrl": ".", 
@@ -18,8 +18,8 @@
     "esModuleInterop": true,
     "paths": {
       "*": ["node_modules/*"]
-    }
+    },
+    "types": ["node", "jest", "mocha", "@types/jest"]
   },
-  "include": ["src/**/*"],
-  "exclude": ["src/tests"]
+  "include": ["src/**/*", "tests/**/*.ts", "tests/unit/controllers/UsersController.test.ts"],
 }

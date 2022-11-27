@@ -6,7 +6,7 @@ services:
       - 3000:3000
     working_dir: /client
     volumes: 
-      - ./client/src:/client/src
+      - ./client/:/client/
     depends_on:
       api:
         condition: service_healthy
@@ -21,7 +21,7 @@ services:
       - 3001:3001
     working_dir: /api
     volumes: 
-      - ./api/src:/api/src
+      - ./api/:/api/
     depends_on:
       db:
         condition: service_healthy
