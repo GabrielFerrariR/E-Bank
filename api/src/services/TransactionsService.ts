@@ -1,5 +1,5 @@
 import { ErrorTypes } from '../errors/catalog';
-import { ITransaction } from '../interfaces/ITransaction';
+import { ITransaction, TransactionResponse } from '../interfaces/ITransaction';
 import AccountService from './AccountService';
 import Transactions from '../database/models/Transactions';
 import sequelize from '../database/models';
@@ -34,7 +34,7 @@ export default class TransactionService {
     private _AccService = new AccountService(), 
     private _transactionModel= Transactions) {}
 
-  async create(username: string, userId: number, body: ITransaction): Promise<Transactions> {
+  async create(username: string, userId: number, body: ITransaction) {
     const {addressee, amount } = body;
 
     await this._checkBalance(username, amount);
@@ -51,7 +51,7 @@ export default class TransactionService {
         value: amount
       }, {transaction: t});
     });
-    return result;
+    return result.dataValues;
   }
 
   private async _checkBalance(username: string, amount: number): Promise<void> {
@@ -63,9 +63,9 @@ export default class TransactionService {
     if (username === addressee) throw new Error(ErrorTypes.Forbidden);
   }
 
-  async readCashIn(accountId: number): Promise<Transactions[]> {
+  async readCashIn(accountId: number): Promise<TransactionResponse[]> {
     
-    return await this._transactionModel.findAll({
+    const result = await this._transactionModel.findAll({
       where: {
         creditedAccountId: accountId
       },
@@ -75,10 +75,11 @@ export default class TransactionService {
       include: this._includeUser,
       order: [['createdAt', 'DESC']],
     });
+    return result.map((r) => r.dataValues);
   }
 
-  async read(accountId: number): Promise<Transactions[]> {
-    return await this._transactionModel.findAll({
+  async read(accountId: number): Promise<TransactionResponse[]> {
+    const result = await this._transactionModel.findAll({
       where: {
         [Op.or]: [{
           debitedAccountId: accountId
@@ -92,10 +93,11 @@ export default class TransactionService {
       include: this._includeUser,
       order: [['createdAt', 'DESC']],
     });
+    return result.map((r) => r.dataValues);
   }
 
-  async readCashOut(accountId: number): Promise<Transactions[]> {    
-    return await this._transactionModel.findAll({
+  async readCashOut(accountId: number): Promise<TransactionResponse[]> {    
+    const result = await this._transactionModel.findAll({
       where: {
         debitedAccountId: accountId
       },
@@ -105,5 +107,6 @@ export default class TransactionService {
       include: this._includeUser,
       order: [['createdAt', 'DESC']],
     });
+    return result.map((r) => r.dataValues);
   }
 }

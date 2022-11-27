@@ -27,3 +27,39 @@ export const tokenMock = {
 }
 
 export const reqUserFormMock = { username: 'josefa', password: 'P@ssw0rd' }
+
+export const createTransactionResponseMock = {
+  "id": 1,
+  "debitedAccountId": 1,
+  "creditedAccountId": 2,
+  "value": "15.1",
+  "updatedAt": "2022-11-27T14:58:34.864Z",
+  "createdAt": "2022-11-27T14:58:34.864Z"
+}
+
+export const readTransactionResponseMock = {
+  "id": 3,
+  "value": "15.1",
+  "createdAt": "2022-11-27T15:18:57.398Z",
+  "updatedAt": "2022-11-27T15:18:57.398Z",
+  "creditedAccount": {
+    "id": 2,
+    "user": {
+      "id": 2,
+      "username": "beutranocosta"
+    }
+  },
+  "debitedAccount": {
+    "id": 1,
+    "user": {
+      "id": 1,
+      "username": "fulanosilva"
+    }
+  }
+}
+
+
+export const transactionReqMock = {
+  addresse: 'beutranocosta',
+  amount: 15
+}
