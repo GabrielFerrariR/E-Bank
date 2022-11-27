@@ -5,7 +5,7 @@ import UserService from '../../../src/services/UserService';
 const { expect } = chai;
 
 import { Request, Response} from 'express';
-import { resUserMock, tokenMock } from '../../mocks/index';
+import { reqUserFormMock, resUserMock, tokenMock } from '../../mocks/index';
 
 describe('Users Controller', () => {
   const req = {} as Request;
@@ -46,7 +46,7 @@ describe('Users Controller', () => {
     beforeEach(async () => {
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns(res);
-      req.body = { username: 'josefa', password: 'P@ssw0rd' }
+      req.body = reqUserFormMock
       sinon
       .stub(userService, 'create')
       .resolves(tokenMock);
@@ -64,7 +64,7 @@ describe('Users Controller', () => {
       expect(statusStub.calledWith(201)).to.be.true;
     });
 
-    it('should return an user on json response', async () => {
+    it('should return a token on json response', async () => {
       await userController.create(req, res, next);
 
       const jsonStub = res.json as sinon.SinonStub;
