@@ -15,7 +15,7 @@ Omit<Service<IUserResponse | Token>, 'create' | 'read' | 'update' |'delete'> {
     this._model = _model;
   }
 
-  async create(object: unknown): Promise<Token> {
+  async create(object: unknown): Promise<IUserResponse> {
     const {password, username} = this.validateBody(object); 
     const hash = this.createHash(password);
     await this.isUniqueUsername(username);
@@ -25,10 +25,10 @@ Omit<Service<IUserResponse | Token>, 'create' | 'read' | 'update' |'delete'> {
       const user = await this._model.create({
         username, password: hash, accountId: account.id
       }, { transaction: t });
-      return user;
+      return {id: user.id, accountId: user.accountId, username: user.username };
     });
 
-    return result as unknown as Token;
+    return result;
   }
 
   private validateBody(object: unknown) {

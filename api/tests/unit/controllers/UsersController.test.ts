@@ -49,7 +49,7 @@ describe('Users Controller', () => {
       req.body = reqUserFormMock
       sinon
       .stub(userService, 'create')
-      .resolves(tokenMock);
+      .resolves(resUserMock);
     });
     
     afterEach(sinon.restore)
@@ -64,11 +64,11 @@ describe('Users Controller', () => {
       expect(statusStub.calledWith(201)).to.be.true;
     });
 
-    it('should return a token on json response', async () => {
+    it('should return a user without password on json response', async () => {
       await userController.create(req, res, next);
 
       const jsonStub = res.json as sinon.SinonStub;
-      expect(jsonStub.calledWith(tokenMock)).to.be.true;
+      expect(jsonStub.calledWith(resUserMock)).to.be.true;
     });
   });
 });

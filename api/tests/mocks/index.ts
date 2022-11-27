@@ -26,7 +26,7 @@ export const tokenMock = {
   token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoiZnVsYW5vc2lsdmEiLCJhY2NvdW50SWQiOjF9LCJpYXQiOjE2Njk1NTg1MDQsImV4cCI6MTY2OTY0NDkwNH0.MdS4XMwTlf0oNubhwahb_3gYS8-YGsb28rJnw-ykneg"
 }
 
-export const reqUserFormMock = { username: 'josefa', password: 'P@ssw0rd' }
+export const reqUserFormMock = { username: 'josefina', password: 'P@ssw0rd' }
 
 export const createTransactionResponseMock = {
   "id": 1,
