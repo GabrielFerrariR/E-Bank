@@ -3,8 +3,7 @@ import chai, { use } from 'chai';
 const { expect } = chai;
 import UserService from '../../../src/services/UserService';
 import sequelize from '../../../src/database/models';
-import { Request, Response} from 'express';
-import { createTransactionResponseMock, reqUserFormMock, reqUserMock, resUserMock, tokenMock } from '../../mocks/index';
+import { reqUserFormMock, resUserMock } from '../../mocks/index';
 import Users from '../../../src/database/models/Users';
 import { Transaction } from 'sequelize';
 import { ZodError } from 'zod';
@@ -42,6 +41,29 @@ describe('Users Service', () => {
         .resolves(resUserMock as Users);
       try {
         await userService.create(reqUserFormMock)
+        expect.fail()
+      } catch (error) {
+        expect(error instanceof Error).to.be.true
+      }
+    })
+  })
+  describe('readOne method, on successful request', () => {
+    afterEach(sinon.restore);
+    it('it should return a user with specific id', async () => {
+      sinon
+        .stub(Users, 'findOne')
+        .resolves(resUserMock as Users);
+      const result = await userService.readOne('3');
+      expect(result).to.be.equal(resUserMock)
+    })
+  })
+  describe('readOne method, on fail request', () => {
+    it('should throw an error if it don"t find any user with the id', async () => {
+      sinon
+        .stub(Users, 'findOne')
+        .resolves(false as unknown as Users);
+      try {
+        await userService.readOne('3');
         expect.fail()
       } catch (error) {
         expect(error instanceof Error).to.be.true
