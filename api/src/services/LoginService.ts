@@ -12,6 +12,7 @@ export default class LoginService {
 
   async login(body: IUser): Promise<Token> {
     const {username, password} = body;
+    if (!username || !password) throw Error(ErrorTypes.WrongCredentials);
     const user = await Users.findOne({where: {username}});
     if (!user) throw Error(ErrorTypes.WrongCredentials);
     const {password: hash, accountId } = user;

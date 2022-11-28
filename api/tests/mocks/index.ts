@@ -63,3 +63,5 @@ export const transactionReqMock = {
   addressee: 'beutranocosta',
   amount: 15
 }
+
+export const expiredToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoiYmV1dHJhbm9jb3N0YSIsImFjY291bnRJZCI6Mn0sImlhdCI6MTY2OTQ2OTIzOSwiZXhwIjoxNjY5NTU1NjM5fQ.1DxhbJjqE4nEq3ema32a36Ze57kE7eUvL7oc7lRBP8k'
