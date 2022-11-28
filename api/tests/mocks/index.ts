@@ -1,7 +1,7 @@
 import { IUser } from "../../src/interfaces/IUser";
 import { IBalance } from "../../src/interfaces/IBalance";
 
-export const accountMock: IBalance = {
+export const accountResMock: IBalance = {
   id: 1,
   username: 'fulanosilva',
   account: {

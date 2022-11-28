@@ -11,7 +11,7 @@ declare module 'express-serve-static-core' {
 }
 
 import { Request, Response, NextFunction } from 'express';
-import { accountMock, reqUserMock } from '../../mocks/index';
+import { accountResMock, reqUserMock } from '../../mocks/index';
 import { ReqUser } from '../../../src/interfaces/IUser';
 
 describe('Accounts Controller', () => {
@@ -28,7 +28,7 @@ describe('Accounts Controller', () => {
       res.json = sinon.stub().returns(res);
       sinon
       .stub(accountService, 'readOne')
-      .resolves(accountMock);
+      .resolves(accountResMock);
     });
     
     afterEach(sinon.restore)
@@ -46,7 +46,7 @@ describe('Accounts Controller', () => {
       await accountController.readOne(req, res, next);
 
       const jsonStub = res.json as sinon.SinonStub;
-      expect(jsonStub.calledWith(accountMock)).to.be.true;
+      expect(jsonStub.calledWith(accountResMock)).to.be.true;
     });
   });
 });
