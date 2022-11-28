@@ -9,6 +9,7 @@ import 'dotenv/config';
 const secret = process.env.JWT_SECRET || 'segredobemguardado';
 
 export default class LoginService {
+
   async login(body: IUser): Promise<Token> {
     const {username, password} = body;
     const user = await Users.findOne({where: {username}});
