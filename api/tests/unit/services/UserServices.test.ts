@@ -58,6 +58,7 @@ describe('Users Service', () => {
     })
   })
   describe('readOne method, on fail request', () => {
+    afterEach(sinon.restore);
     it('should throw an error if it don"t find any user with the id', async () => {
       sinon
         .stub(Users, 'findOne')

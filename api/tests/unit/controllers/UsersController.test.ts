@@ -5,7 +5,7 @@ import UserService from '../../../src/services/UserService';
 const { expect } = chai;
 
 import { Request, Response} from 'express';
-import { reqUserFormMock, resUserMock, tokenMock } from '../../mocks/index';
+import { reqUserFormMock, resUserMock } from '../../mocks/index';
 
 describe('Users Controller', () => {
   const req = {} as Request;

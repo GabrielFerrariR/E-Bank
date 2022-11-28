@@ -31,7 +31,7 @@ export default class TransactionService {
   ];
 
   constructor(
-    private _AccService = new AccountService(), 
+    public _AccService = new AccountService(), 
     private _transactionModel= Transactions) {}
 
   async create(username: string, userId: number, body: ITransaction) {

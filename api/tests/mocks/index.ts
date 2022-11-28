@@ -60,6 +60,6 @@ export const readTransactionResponseMock = {
 
 
 export const transactionReqMock = {
-  addresse: 'beutranocosta',
+  addressee: 'beutranocosta',
   amount: 15
 }

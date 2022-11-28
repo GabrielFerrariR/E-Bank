@@ -5,7 +5,7 @@ import TransactionsService from '../../../src/services/TransactionsService';
 const { expect } = chai;
 
 import { Request, Response} from 'express';
-import { reqUserMock, tokenMock, transactionReqMock, createTransactionResponseMock, readTransactionResponseMock } from '../../mocks/index';
+import { reqUserMock, transactionReqMock, createTransactionResponseMock, readTransactionResponseMock } from '../../mocks/index';
 
 describe('Transactions Controller', () => {
   const req = {} as Request;
