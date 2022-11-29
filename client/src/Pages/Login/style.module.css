@@ -4,7 +4,7 @@
   height: 100vh;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 90%;
 }
 
 .main * {
@@ -19,8 +19,15 @@
 .anchor {
   display: inline;
   text-decoration: none;
+  text-align: center;
   color: #8f08ff;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 400;
   font-size: 1.5rem;
+}
+
+@media (max-width:500px) {
+  .anchor {
+    display: block;
+  }
 }

@@ -26,7 +26,7 @@ export default function History() {
 
   const handleDateFiltering = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
     setDate(value);
-    const filterByDate = currentList.filter((curr) => curr.createdAt.includes(value));
+    const filterByDate = transactions.filter((curr) => curr.createdAt.includes(value));
     setCurrentList(filterByDate);
   };
 
