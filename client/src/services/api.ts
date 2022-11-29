@@ -5,8 +5,6 @@ const api = axios.create({
   baseURL: 'http://localhost:3001/',
 });
 
-const request = async () => api.get('/');
-
 export const setToken = async (token: string) => {
   api.defaults.headers.common.Authorization = token;
 };
@@ -30,5 +28,3 @@ export const requestTransfer = async (body: { addressee: string, amount: number 
   const { data } = await api.post('/transaction', body);
   return data;
 };
-
-export default request;
