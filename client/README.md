@@ -14,16 +14,31 @@
 ## Sobre
 
 Aplicação que o usuário pode fazer seu login, visualizar seu saldo em conta e suas transferências, além de poder realizar transfêrencias a outros usuários por meio do seu nome de usuário.
+Nesta aplicação, o usuário pode:
+- Fazer login ou registrar-se
+- Visualizar seu saldo e histórico de transferencias;
+- Fazer uma busca por data ou tipo de transferência;
+- Fazer uma transfêrencia para outro usuário através do nome de usuário;
 
 ## Tecnologias utilizadas
 
-- TypeScript
-- Vite
-- React
+- Vite + React + Typescript
 - MUI Icons
 - Axios
-- React Axe
+- React Axe para assegurar acessibilidade das telas; 
 - Jest
 - RTL
-- ESLint
+- ESLint para assegurar a qualidade do código
 - CSS modules
+- Mobile first e responsividade
+
+## Rodando a a aplicação
+
+```bash
+npm run dev 
+## se o compose estiver funcional, não há necessidade de rodar este comando
+```
+
+## Rodando testes
+
+Em benefício do tempo, optei por não fazer os testes no frontend

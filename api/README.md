@@ -20,13 +20,12 @@ Foi  utilizado a arquitetura MSC para organização da aplicação e o padrão R
 
 - TypeScript
 - Node.js
-- Express.js
-- Postgres
-- Sequelize
-- Mocha, Chai, chai-http, nyc e Sinon
-- Zod
-- JWT e Bcrypt
-- ESLint
+- Express.js para criação da API
+- Postgres com Sequelize
+- Mocha, Chai, chai-http, nyc e Sinon para testes unitários e de integração
+- Zod para validação de objetos e tipagem
+- JWT e Bcrypt para emcriptação de senhas
+- ESLint para assegurar qualidade do código
 
 ## Documentação
 
@@ -50,3 +49,6 @@ Outros scripts:
 npm run db:reset ## Reinicia o banco, migration e seeders caso necessário
 
 npm run dev # Inicia a aplicaçao express, caso você já tenha rodado o docker-compose esse comando não irá funcionar
+```
+
+> A aplicação está funcionando na porta 3001, caso queira fazer alguma modificação de rota, acesse o docker-compose na raiz do projeto e altere as variáveis de ambiente
