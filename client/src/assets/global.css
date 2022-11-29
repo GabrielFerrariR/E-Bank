@@ -28,6 +28,7 @@ button {
 	display:inline-block;
 	cursor:pointer;
 	padding:0.8rem 0;
+  width: 10rem;
 }
 
 button:active {

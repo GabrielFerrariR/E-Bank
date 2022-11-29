@@ -52,7 +52,7 @@ services:
       retries: 5
     cap_add:
       - SYS_NICE
-  adminer:
+  adminer:  ## O adminer está aqui apenas para visualização da estrutura do banco
     image: adminer
     restart: always
     ports:
