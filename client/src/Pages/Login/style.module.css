@@ -13,9 +13,14 @@
 
 .main p{
   margin-left: 2em;
+  display: inline;
 }
 
 .anchor {
+  display: inline;
   text-decoration: none;
   color: #8f08ff;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
 }

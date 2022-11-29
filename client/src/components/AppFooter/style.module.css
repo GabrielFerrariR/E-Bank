@@ -1,5 +1,7 @@
+@import '../../assets/colors.css';
+
 .footer {
-  background-color: black;
+  background-color: var(--primary);
   position: fixed;
   bottom: 0;
   left: 0;
@@ -12,7 +14,7 @@
 
 .button {
   border: none;
-  background-color: black;
+  background-color: var(--primary);
 }
 
 @media (min-width: 800px) {

@@ -1,11 +1,36 @@
 input {
-    background-color:#ffffff;
+    background-color:var(--secondary);
     border-radius:5px;
-    border:1px solid #000000;
+    border:1px solid var(--primary);
     cursor:pointer;
-    color:#000000;
+    color:var(--primary);
     padding:0.8em 2.75em;
     text-decoration:none;
     width: 12rem;
 }
 
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    appearance: textfield;
+}
+
+button {
+  box-shadow: 3px 4px 0px 0px var(--primary);
+	background-color:var(--secondary);
+	border-radius:5px;
+	border:1px solid var(--primary);
+	display:inline-block;
+	cursor:pointer;
+	padding:0.8rem 0;
+}
+
+button:active {
+	position:relative;
+	top:1px;
+}

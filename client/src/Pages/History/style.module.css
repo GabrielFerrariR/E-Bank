@@ -9,10 +9,12 @@
 }
 
 .button {
-  background-color: white;
   border: none;
   margin: 1rem 1rem;
   position: relative;
+  border-radius: none;
+  box-shadow: none;
+  padding: 0;
 }
 
 .button::after {

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import LoginForm from '../../components/LoginForm';
 import style from './style.module.css';
@@ -10,18 +11,22 @@ function Login() {
       <LoginForm />
       {(pathname === '/login')
         ? (
-          <p>
-            Ainda não é cadastrado?
-            {' '}
+          <span>
+            <p>
+              Ainda não é cadastrado?
+              {' '}
+            </p>
             <Link className={style.anchor} to="/register">Cadastre-se</Link>
-          </p>
+          </span>
         )
         : (
-          <p>
-            Ja é cadastrado?
-            {' '}
+          <span>
+            <p>
+              Já é cadastrado?
+              {' '}
+            </p>
             <Link className={style.anchor} to="/login">Efetue o login</Link>
-          </p>
+          </span>
         )}
     </main>
   );

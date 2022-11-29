@@ -59,12 +59,12 @@ function LoginForm() {
     <form onSubmit={handleSubmit} className={style.form}>
       <label htmlFor="username" className={style.label}>
         Usuário:
-        <input type="text" name="username" id="username" onChange={handleChange} value={username} />
+        <input type="text" name="username" id="username" onChange={handleChange} value={username} data-testid="username-input" />
         <PersonIcon sx={inputIconSx} />
       </label>
       <label htmlFor="password" className={style.label}>
         Senha:
-        <input type={isPasswordVisible ? 'text' : 'password'} name="password" onChange={handleChange} value={password} />
+        <input type={isPasswordVisible ? 'text' : 'password'} name="password" onChange={handleChange} value={password} data-testid="password-input" />
         <KeyIcon sx={inputIconSx} />
         {isPasswordVisible
           ? <VisibilityIcon sx={visibilitySx} onClick={togglePasswordVisbility} />

@@ -1,9 +1,11 @@
+@import '../../assets/colors.css';
+
 .cashOut {
-  color: rgb(246, 64, 64);
+  color: var(--debit);
 }
 
 .cashIn {
-  color: rgb(43, 142, 32);
+  color: var(--credit);
 }
 
 .card {

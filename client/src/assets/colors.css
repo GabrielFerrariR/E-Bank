@@ -1,4 +1,6 @@
 :root {
-  --primary: black,
-  --secondary: white,
+  --primary: black;
+  --secondary: white;
+  --debit: rgb(246, 64, 64);
+  --credit: rgb(43, 142, 32);
 }
