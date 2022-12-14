@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../api"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"conventionalCommits.scopes": [
+			"database",
+			"msc",
+			"interfaces",
+			"routes",
+			"services",
+			"client",
+			"controllers"
+		]
+	}
+}
