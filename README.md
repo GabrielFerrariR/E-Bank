@@ -154,7 +154,7 @@ Nesta aplicação, o usuário pode:
 ### History
 
 <div align="center">
-<img src="client/src/assets/images/history-mobile.png height='300px'>
+<img src="client/src/assets/images/history-mobile.png" height='300px'>
 
 </div>
 
