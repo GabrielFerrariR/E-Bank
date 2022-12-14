@@ -2,7 +2,7 @@
 
 ## Sobre
 
-O E-bank é uma aplicação fullstack baseada na proposta de desafio técnico proposto por uma empresa de tecnologia.
+O E-bank é uma aplicação fullstack baseada no desafio técnico proposto por uma empresa de tecnologia.
 
 ## Rodando o projeto
 
